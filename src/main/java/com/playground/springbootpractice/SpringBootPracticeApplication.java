@@ -13,6 +13,6 @@ public class SpringBootPracticeApplication {
 
         ProductService service = context.getBean(ProductService.class);
 
-        service.findProducts();
+        service.paginateProducts(0, 15);
     }
 }

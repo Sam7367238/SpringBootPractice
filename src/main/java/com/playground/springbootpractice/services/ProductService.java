@@ -2,6 +2,8 @@ package com.playground.springbootpractice.services;
 
 import com.playground.springbootpractice.entities.Product;
 import com.playground.springbootpractice.repositories.ProductRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
@@ -31,5 +33,17 @@ public class ProductService {
         List<Product> products = repository.findAll();
 
         products.forEach(product -> System.out.println("Product: " + product.getName()));
+    }
+
+    public void paginateProducts(int pageNumber, int limit) {
+        PageRequest pageRequest = PageRequest.of(pageNumber, limit);
+
+        Page<Product> page = repository.findAll(pageRequest);
+
+        List<Product> products = page.getContent();
+
+        System.out.printf("| Page %s (%d) |\n", pageNumber, page.getTotalElements());
+
+        products.forEach(product -> System.out.println("- " + product.getName()));
     }
 }
