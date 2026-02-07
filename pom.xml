@@ -77,6 +77,11 @@
                 <groupId>org.flywaydb</groupId>
                 <artifactId>flyway-maven-plugin</artifactId>
                 <version>12.0.0</version>
+                <configuration>
+                    <url>jdbc:mysql://localhost:3306/SpringDatabase?createDatabaseIfNotExist=false</url>
+                    <user>root</user>
+                    <password>Ayman_Database</password>
+                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
