@@ -2,7 +2,6 @@ package com.playground.springbootpractice.entities;
 
 import jakarta.persistence.*;
 import lombok.*;
-
 import java.math.BigDecimal;
 
 @Getter
@@ -24,4 +23,8 @@ public class Product {
     @Column(name = "price", nullable = false, precision = 9, scale = 2)
     @NonNull
     private BigDecimal price;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
 }
